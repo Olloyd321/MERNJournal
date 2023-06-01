@@ -5,6 +5,15 @@ const typeDefs = gql`
         _id: ID
         username: String
         password: String
+        entries: [Entry]!
+    }
+
+    type Entry {
+        _id: ID
+        entryTitle: String
+        entryContent: String
+        entryAuthor: String
+        createdAt: String
     }
 
     # Auth type to handle returning data from a profile creating or user login
@@ -22,6 +31,8 @@ const typeDefs = gql`
         # Mutations to handle creating a profile or logging into a profile and return Auth type
         addProfile(username: String!, password: String!): Auth
         login(username: String!, password: String!): Auth
+        addEntry(entryTitle: String!, entryContent: String!): Entry
+
     }
 `;
 

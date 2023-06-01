@@ -1,4 +1,5 @@
 const { Profile } = require('../models');
+const Entry = require('../models/Entry');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
@@ -36,6 +37,23 @@ const resolvers = {
             const token = signToken(profile);
       
             return { token, profile };
+        },
+        addEntry: async (parent, { entryTitle, entryContent }, context) => {
+          if (context.profile) {
+            const entry = await Entry.create({
+              entryTitle,
+              entryContent,
+              entryAuthor: context.entry.username,
+            });
+    
+            await Entry.findOneAndUpdate(
+              { _id: context.profile._id },
+              { $addToSet: { entries: entry._id } }
+            );
+    
+            return entry;
+          }
+          throw new AuthenticationError('You need to be logged in!');
         },
     }
 };
