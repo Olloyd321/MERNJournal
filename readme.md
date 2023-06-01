@@ -1,5 +1,16 @@
 ![Application Logo](./assets/MERNJournal-1.png)
 
+
+## Table of Contents
+
+* [Installation](#installation) 
+* [Usage](#usage)
+* [License](#license) 
+* [Contributing](#contributing) 
+* [Tests](#tests)
+* [Questions](#questions)
+
+
 Heroku -
 
 Walkthough Video -
@@ -28,4 +39,38 @@ THEN the new note I have entered is saved and appears
 WHEN I click on an existing note
 THEN the same note appears elsewhere on the page
 ```
+
+
+## Installation 
+
+To install dependencies run the following command: 
+
+```
+npm i
+```
+
+## Usage 
+
+A useful note-taking application
+
+## License 
+  
+This Project is licensed under the MIT license.
+
+## Contributing
+
+Contributions welcome please message a contributor
+
+## Tests
+
+To perform tests run the following command: 
+
+```
+npm test
+```
+
+## Questions
+
+For any questions on this project please email , or contact me on github[ruchiagarwal26, jmcavaddy, and  Olloyd](https://github.com/ruchiagarwal26, jmcavaddy, and  Olloyd/)] below.
+To view more of my projects visit [ruchiagarwal26, jmcavaddy, and  Olloyd](https://github.com/ruchiagarwal26, jmcavaddy, and  Olloyd/).
 
