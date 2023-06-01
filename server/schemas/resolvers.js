@@ -43,7 +43,7 @@ const resolvers = {
             const entry = await Entry.create({
               entryTitle,
               entryContent,
-              entryAuthor: context.entry.username,
+              entryAuthor: context.profile.username,
             });
     
             await Entry.findOneAndUpdate(
