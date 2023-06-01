@@ -1,6 +1,6 @@
 MERNJournal 
 
-[Application Logo](./assets/MERNJournal-1.png)
+![Application Logo](./assets/MERNJournal-1.png)
 
 Heroku -
 
