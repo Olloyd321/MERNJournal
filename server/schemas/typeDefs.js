@@ -24,7 +24,9 @@ const typeDefs = gql`
 
     type Query {
         profiles: [Profile]
+        profile(username: String!): Profile
         me: Profile
+        entries(username: String): [Entry]
     }
 
     type Mutation {

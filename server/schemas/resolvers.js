@@ -1,19 +1,25 @@
-const { Profile } = require('../models');
-const Entry = require('../models/Entry');
+const { Profile, Entry } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
     Query: {
         profiles: async () => {
-            return await Profile.find({});
+            return Profile.find({});
+        },
+        profile: async (parent, { username }) => {
+            return Profile.findOne({ username: username }).populate('entries');
         },
         me: async (parent, args, context) => {
             if (context.profile) {
-              return Profile.findOne({ _id: context.profile._id });
+              return Profile.findOne({ _id: context.profile._id }).populate('entries');
             }
             throw new AuthenticationError('You need to be logged in!');
           },
+        entries: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Entry.find(params).sort({ createdAt: -1 });
+        }
     },
     Mutation: {
         addProfile: async (parent, { username, password }) => {
@@ -46,9 +52,9 @@ const resolvers = {
               entryAuthor: context.profile.username,
             });
     
-            await Entry.findOneAndUpdate(
+            await Profile.findOneAndUpdate(
               { _id: context.profile._id },
-              { $addToSet: { entries: entry._id } }
+              { $addToSet: { entries: entry } }
             );
     
             return entry;
