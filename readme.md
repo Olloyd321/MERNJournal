@@ -1,5 +1,6 @@
 ![Application Logo](./assets/MERNJournal-1.png)
 
+![licenseBadge](https://img.shields.io/badge/License-MIT-red)
 
 ## Table of Contents
 
