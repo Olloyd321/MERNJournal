@@ -1,5 +1,11 @@
 MERNJournal
 
+Heroku -
+
+Walkthough Video -
+
+MERNJournal is a fullstack note-taking application created by 
+
 USER STORY 
 ```
 GIVEN a MERN based note-taking application
