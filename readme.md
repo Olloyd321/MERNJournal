@@ -4,7 +4,7 @@ Heroku -
 
 Walkthough Video -
 
-MERNJournal is a fullstack note-taking application created by [ruchiagarwal26](https://github.com/ruchiagarwal26) [jmcavaddy](https://github.com/jmcavaddy) [Olloyd](https://github.com/Olloyd321)
+MERNJournal is a fullstack note-taking application created by [ruchiagarwal26](https://github.com/ruchiagarwal26), [jmcavaddy](https://github.com/jmcavaddy), and [Olloyd](https://github.com/Olloyd321)
 
 USER STORY 
 ```
