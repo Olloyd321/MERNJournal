@@ -8,6 +8,7 @@ const { authMiddleware } = require('./utils/auth');
 // Import the two parts of a GraphQL schema
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+const path = require('path');
 
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
@@ -20,6 +21,15 @@ const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+//giving access to everything in build folder, consolidated on client side
+if (process.env.Node_ENV === 'production'){
+  app.use(express.static(path.join(__dirname,'../client/build/index.html')))
+}
+
+app.get('/',(req,res) => {
+ res.sendFile(path.join(__dirname, "../client/build/index.html"))
+});
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
