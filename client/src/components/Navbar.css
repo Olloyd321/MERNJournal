@@ -1,0 +1,60 @@
+/* AppNavbar.css */
+
+.background {
+    background-image: url("../assets/background.gif");
+    height: 100vh;
+    overflow: auto;
+    
+}
+
+.navbar {
+    background-color: #333;
+  }
+  
+  .nav-link {
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-link:hover {
+    color: #fff;
+  }
+  
+  .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  /* Styles for the image upload section */
+  
+  .upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .uploaded-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .upload-placeholder {
+    width: 400px;
+    height: 400px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    object-fit: cover;
+  }
+  

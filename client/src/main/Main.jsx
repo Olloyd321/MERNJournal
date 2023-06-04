@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import Auth from '../utils/auth';
 
 const Main = ({ activeNote, onUpdateNote }) => {
   const onEditField = (field, value) => {
@@ -9,13 +10,13 @@ const Main = ({ activeNote, onUpdateNote }) => {
     });
   };
 
-  if (!activeNote) return <div className="no-active-note">No Active Note</div>;
-
+ if (!activeNote) return <div className="no-active-note">No Active Note</div>;
+ 
   return (
     <div className="app-main">
       <div className="app-main-note-edit">
         <input
-          type="text"
+          type="text" 
           id="title"
           placeholder="Note Title"
           value={activeNote.title}

@@ -1,8 +1,19 @@
+import React from 'react';
 import { useEffect, useState } from "react";
 import uuid from "react-uuid";
 import "./App.css";
 import Main from "./main/Main";
 import Sidebar from "./sidebar/Sidebar";
+import Navbar from "./components/Navbar";
+//adding apollo dependencies
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+// create client to talk to graphql
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+})
 
 function App() {
   const [notes, setNotes] = useState(
@@ -47,16 +58,32 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Sidebar
-        notes={notes}
-        onAddNote={onAddNote}
-        onDeleteNote={onDeleteNote}
-        activeNote={activeNote}
-        setActiveNote={setActiveNote}
+    //wrapping app child components into apollo container
+    <ApolloProvider client={client}>
+      <Router>
+        <Routes>
+          <Route
+           path='/'
+           element={<Navbar />}
+           />
+        
+      <Route
+          path='/homepage'
+          element=
+        {<div className="App">
+        <Sidebar
+          notes={notes}
+          onAddNote={onAddNote}
+          onDeleteNote={onDeleteNote}
+          activeNote={activeNote}
+          setActiveNote={setActiveNote}
+        />
+        <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
+      </div>}
       />
-      <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
-    </div>
+      </Routes>
+      </Router>
+    </ApolloProvider>
   );
 }
 
