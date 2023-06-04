@@ -61,7 +61,38 @@ const resolvers = {
           }
           throw new AuthenticationError('You need to be logged in!');
         },
-    }
+        removeEntry: async (parent, { entryId }, context ) => {
+          if (context.profile) {
+            const entry = await Entry.findOneAndDelete({
+              _id: entryId,
+              entryAuthor: context.profile.username,
+            });
+
+            await Profile.findOneAndUpdate(
+              { _id: context.profile._id },
+              { $pull: { entries: entryId } }
+            );
+
+            return entry;
+          }
+
+        throw new AuthenticationError('You need to be logged in!');
+    },
+
+      editEntry: async (parent, { entryId, entryTitle, entryContent }, context) => {
+        if (context.profile) {
+          const entry = await Entry.findOneAndUpdate(
+            { _id: entryId, entryAuthor: context.profile.username },
+            { entryTitle, entryContent },
+            { new: true }
+          );
+
+          return entry;
+        }
+
+        throw new AuthenticationError('You need to be logged in!');
+      }
+  },
 };
 
 module.exports = resolvers;

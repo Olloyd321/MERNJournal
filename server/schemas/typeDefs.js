@@ -34,7 +34,8 @@ const typeDefs = gql`
         addProfile(username: String!, password: String!): Auth
         login(username: String!, password: String!): Auth
         addEntry(entryTitle: String!, entryContent: String!): Entry
-
+        removeEntry(entryId: ID!): Entry
+        editEntry(entryId: ID!, entryTitle: String!, entryContent: String!): Entry
     }
 `;
 
