@@ -2,7 +2,8 @@
 
 .background {
     background-image: url("../assets/background.gif");
-    
+    height: 100vh;
+    overflow: auto;
     
 }
 
