@@ -47,6 +47,9 @@ THEN the same note appears elsewhere on the page
 To install dependencies run the following command: 
 
 ```
+cd - client
+npm i
+cd - server
 npm i
 ```
 
