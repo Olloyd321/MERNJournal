@@ -61,11 +61,11 @@ This Project is licensed under the MIT license.
 ## Contributing
 
 Contributions welcome please message a contributor
-
+<!-- 
 ## Tests
 
 To perform tests run the following command: 
-
+ -->
 ```
 npm test
 ```
