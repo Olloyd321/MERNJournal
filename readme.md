@@ -51,7 +51,7 @@ To install dependencies run the following command:
 npm install
 npm run develop
 
-[```
+```
 
 ## Usage 
 
@@ -63,17 +63,23 @@ This Project is licensed under the MIT license.
 
 ## Contributing
 
-Contributions welcome please message a contributor
+Contributions welcome please message a contributor below.
+
+## Contributors
+
+[ruchiagarwal26](https://github.com/ruchiagarwal26), [jmcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321), [Harrison Zussman](https://github.com/HarrisonZussman), [William Hurst](https://github.com/FreeWill201)
+
 <!-- 
 ## Tests
 
 To perform tests run the following command: 
  -->
+ 
 ```
 npm test
 ```
 
 ## Questions
 
-For any questions on this project please email , or contact us on github - [ruchiagarwal26](https://github.com/ruchiagarwal26), [jmcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321), [Harrison Zussman](https://github.com/HarrisonZussman), [William Hurst](https://github.com/FreeWill201).[
+For any questions on this project please email , or contact us on github - [ruchiagarwal26](https://github.com/ruchiagarwal26), [jmcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321), [Harrison Zussman](https://github.com/HarrisonZussman), [William Hurst](https://github.com/FreeWill201).
 
