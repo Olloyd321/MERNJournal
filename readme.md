@@ -47,8 +47,11 @@ THEN the same note appears elsewhere on the page
 To install dependencies run the following command: 
 
 ```
-npm install[
-```
+
+npm install
+npm run develop
+
+[```
 
 ## Usage 
 
