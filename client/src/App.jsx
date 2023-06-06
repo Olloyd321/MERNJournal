@@ -9,6 +9,11 @@ import Navbar from "./components/Navbar";
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+//graphql 
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_PROFILES, QUERY_SINGLE_PROFILE, QUERY_ME } from './utils/queries';
+
 // create client to talk to graphql
 const client = new ApolloClient({
   uri: '/graphql',
