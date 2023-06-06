@@ -17,7 +17,7 @@ Heroku -
 
 Walkthough Video -
 
-MERNJournal is a fullstack note-taking application created by [ruchiagarwal26](https://github.com/ruchiagarwal26), [jmcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321),  [Harrison Zussman](https://github.com/HarrisonZussman), and [William Hurst](https://github.com/FreeWill201) with the end goal being a refined, refactored note taking application that is an improvement on our previous note taker applications.
+MERNJournal is a fullstack note-taking application created by [ruchiagarwal26](https://github.com/ruchiagarwal26), [jmcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321),  [Harrison Zussman](https://github.com/HarrisonZussman), and [William Hirst](https://github.com/FreeWill201) with the end goal being a refined, refactored note taking application that is an improvement on our previous note taker applications.
 
 USER STORY 
 ```
@@ -82,5 +82,5 @@ npm test
 
 ## Questions
 
-For any questions on this project please email , or contact us on github - [ruchi](https://github.com/ruchiagarwal26), [John Mcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321), [Harrison Zussman](https://github.com/HarrisonZussman), [William Hurst](https://github.com/FreeWill201).
+For any questions on this project please email , or contact us on github - [ruchi](https://github.com/ruchiagarwal26), [John Mcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321), [Harrison Zussman](https://github.com/HarrisonZussman), [William Hirst](https://github.com/FreeWill201).
 
