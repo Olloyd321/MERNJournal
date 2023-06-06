@@ -143,3 +143,64 @@ textarea {
   font-size: 1rem;
   line-height: 2rem;
 }
+
+/* Tablet and phone friendly */
+@media screen and (max-width: 800px) {
+  .App {
+    flex-direction: column;
+  }
+  .app-sidebar,
+  .app-main,
+  .no-active-note {
+    width: 100%;
+    height: 50vh;
+  }
+  .app-main-note-edit,
+  .app-main-note-preview {
+    height: 25vh;
+  }
+  .app-sidebar-notes {
+    height: calc(50vh - 78px);
+  }
+  .app-main-note-edit input,
+  textarea {
+    height: calc(25vh - 130px);
+  }
+  .app-sidebar-header h1,
+  .no-active-note {
+    font-size: 1.5rem;
+  }
+  button {
+    font-size: 14px;
+  }
+  .app-main-note-edit input {
+    font-size: 1.5rem;
+  }
+  .markdown-preview {
+    font-size: 14px;
+    line-height: 1.5rem;
+  }
+  /* Existing styles */
+  #site-name {
+    font-size: 2rem;
+    top: 10px;
+    left: 10px;
+    max-width: 300px;
+  }
+  header {
+    height: 150px;
+  }
+  .thumbnail img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  header img {
+    max-height: 150px;
+  }
+  #site-slogan {
+    bottom: 80px;
+    font-size: 10px;
+    left: 10px;
+  }
+}
+
