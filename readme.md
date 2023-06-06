@@ -4,12 +4,13 @@
 
 ## Table of Contents
 
-* [Installation](#installation) 
-* [Usage](#usage)
-* [License](#license) 
-* [Contributing](#contributing) 
-* [Tests](#tests)
-* [Questions](#questions)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Contributors](#contributors)
+- [Questions](#questions)
 
 
 Heroku -
@@ -55,7 +56,7 @@ npm run develop
 
 ## Usage 
 
-A useful note-taking application
+A useful note-taking application 
 
 ## License 
   
