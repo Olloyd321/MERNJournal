@@ -71,13 +71,11 @@ Contributions welcome please message a contributor below.
 
 <!-- 
 ## Tests
-
 To perform tests run the following command: 
- -->
- 
 ```
 npm test
 ```
+-->
 
 ## Questions
 
