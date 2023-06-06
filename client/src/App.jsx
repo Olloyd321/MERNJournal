@@ -9,6 +9,12 @@ import Navbar from "./components/Navbar";
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+//graphql 
+import { gql } from '@apollo/client';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_PROFILES, QUERY_SINGLE_PROFILE, QUERY_ME } from './utils/queries';
+
 // create client to talk to graphql
 const client = new ApolloClient({
   uri: '/graphql',
@@ -16,20 +22,25 @@ const client = new ApolloClient({
 })
 
 function App() {
-  const [notes, setNotes] = useState(
-    localStorage.notes ? JSON.parse(localStorage.notes) : []
-  );
-  const [activeNote, setActiveNote] = useState(false);
+
+  const { loading, error, data } = useQuery(QUERY_ME);
+  const [createNote] = useMutation(ADD_ENTRY);
+  const [updateNote] = useMutation(EDIT_ENTRY);
+  const [deleteNote] = useMutation(REMOVE_ENTRY);
+
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
+    if (!loading && data) {
+      setNotes(data.notes);
+    }
+  }, [loading, data]);
 
   const onAddNote = () => {
     const newNote = {
       id: uuid(),
-      title: "Untitled Note",
-      body: "",
+      title: 'Untitled Note',
+      body: '',
       lastModified: Date.now(),
     };
 
