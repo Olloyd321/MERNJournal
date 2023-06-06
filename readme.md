@@ -68,7 +68,7 @@ Contributions welcome please message a contributor below.
 
 ## Contributors
 
-[ruchi](https://github.com/ruchiagarwal26), [John Mcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321), [Harrison Zussman](https://github.com/HarrisonZussman), [William Hurst](https://github.com/FreeWill201)
+[ruchi](https://github.com/ruchiagarwal26), [John Mcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321), [Harrison Zussman](https://github.com/HarrisonZussman), [William Hirst](https://github.com/FreeWill201)
 
 <!-- 
 ## Tests
