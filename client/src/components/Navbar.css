@@ -57,4 +57,47 @@
     color: #888;
     object-fit: cover;
   }
+
+  /* Tablet and phone friendly */
+@media screen and (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .upload-container {
+    margin-top: 10px;
+  }
+
+  .uploaded-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .upload-placeholder {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1rem;
+  }
+
+  .uploaded-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .upload-placeholder {
+    width: 250px;
+    height: 250px;
+  }
+}
+
   
