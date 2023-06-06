@@ -81,4 +81,3 @@ npm test
 ## Questions
 
 For any questions on this project please email , or contact us on github - [ruchi](https://github.com/ruchiagarwal26), [John Mcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321), [Harrison Zussman](https://github.com/HarrisonZussman), [William Hurst](https://github.com/FreeWill201).
-

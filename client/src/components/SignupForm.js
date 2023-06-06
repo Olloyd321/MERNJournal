@@ -75,7 +75,7 @@ const SignupForm = () => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor='password'>Password</Form.Label>
+          <Form.Label htmlFor='password'>Password (6 Character Minimum)</Form.Label>
           <Form.Control
             type='password'
             placeholder='Your password'
