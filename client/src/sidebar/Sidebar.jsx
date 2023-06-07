@@ -17,20 +17,20 @@ const Sidebar = ({
         <button onClick={Auth.logout}>Logout</button>
       </div>
       <div className="app-sidebar-notes">
-        {sortedNotes.map(({ id, title, body, lastModified }, i) => (
+        {sortedNotes.map(({ _id, entryTitle, entryContent, createdAt }, i) => (
           <div
-            className={`app-sidebar-note ${id === activeNote && "active"}`}
-            onClick={() => setActiveNote(id)}
+            className={`app-sidebar-note ${_id === activeNote && "active"}`}
+            onClick={() => setActiveNote(_id)}
           >
             <div className="sidebar-note-title">
-              <strong>{title}</strong>
-              <button onClick={(e) => onDeleteNote(id)}>Delete</button>
+              <strong>{entryTitle}</strong>
+              <button onClick={(e) => onDeleteNote(_id)}>Delete</button>
             </div>
 
-            <p>{body && body.substr(0, 100) + "..."}</p>
+            <p>{entryContent && entryContent.substr(0, 100) + "..."}</p>
             <small className="note-meta">
               Last Modified{" "}
-              {new Date(lastModified).toLocaleDateString("en-GB", {
+              {new Date(createdAt).toLocaleDateString("en-GB", {
                 hour: "2-digit",
                 minute: "2-digit",
               })}
