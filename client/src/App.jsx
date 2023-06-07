@@ -19,7 +19,7 @@ import { QUERY_PROFILES, QUERY_SINGLE_PROFILE, QUERY_ME } from './utils/queries'
 function App() {
   //const { loading, data } = useQuery(QUERY_PROFILES);
   const { loading, data } = useQuery(QUERY_SINGLE_PROFILE, {
-    variables: {profileUsername:'abcdefg'}
+    variables: {profileUsername:'abcdefg'}//todo: store login name in local storage and update this hardcoded
   }
     );
   const testNotes = data?.profile?.entries || [];
