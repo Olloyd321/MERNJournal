@@ -56,7 +56,7 @@ npm run develop
 
 ## Usage 
 
-A useful note-taking application 
+A useful note-taking application designed for the user to be able to create their own profile and keep track of specific notes that they deem important. This is made with students in mind along with all other professions that require the ability to save important information to be referenced later. 
 
 ## License 
   
