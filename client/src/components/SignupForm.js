@@ -3,7 +3,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 
 
-import { createUser } from '../utils/API';
+// The following is dead code. import { createUser } from '../utils/API';
 import Auth from '../utils/auth';
 import { ADD_USER } from "../utils/mutations";
 
@@ -75,7 +75,7 @@ const SignupForm = () => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor='password'>Password</Form.Label>
+          <Form.Label htmlFor='password'>Password (6 Character Minimum)</Form.Label>
           <Form.Control
             type='password'
             placeholder='Your password'

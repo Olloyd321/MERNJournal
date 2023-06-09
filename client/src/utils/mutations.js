@@ -24,3 +24,35 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_ENTRY = gql`
+mutation  AddEntry($entryTitle: String!, $entryContent: String!) {
+  addEntry(entryTitle: $entryTitle, entryContent: $entryContent) {
+    _id
+    createdAt
+    entryAuthor
+    entryContent
+    entryTitle
+  }
+}
+`;
+
+export const EDIT_ENTRY = gql`
+mutation EditEntry($entryId: ID!, $editEntryEntryTitle: String!, $editEntryEntryContent: String!) {
+  editEntry(entryId: $entryId, entryTitle: $editEntryEntryTitle, entryContent: $editEntryEntryContent) {
+    _id
+    createdAt
+    entryAuthor
+    entryContent
+    entryTitle
+  }
+}
+`;
+
+export const REMOVE_ENTRY = gql`
+mutation RemoveEntry($removeEntryEntryId2: ID!) {
+  removeEntry(entryId: $removeEntryEntryId2) {
+    _id
+  }
+}
+`;

@@ -5,61 +5,152 @@ import "./App.css";
 import Main from "./main/Main";
 import Sidebar from "./sidebar/Sidebar";
 import Navbar from "./components/Navbar";
-//adding apollo dependencies
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-// create client to talk to graphql
+//adding apollo dependencies
+
+//graphql 
+import { useParams } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, useMutation, createHttpLink } from '@apollo/client';
+import { QUERY_PROFILES, QUERY_SINGLE_PROFILE, QUERY_ME } from './utils/queries';
+import { ADD_ENTRY,EDIT_ENTRY,REMOVE_ENTRY } from './utils/mutations';
+import { setContext } from '@apollo/client/link/context';
+import ReactDOM from "react-dom";
+
+
+const httpLink = createHttpLink({
+  uri: '/graphql', // Replace with your GraphQL endpoint
+});
+
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+// Create the Apollo client instance
 const client = new ApolloClient({
-  uri: '/graphql',
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
-})
+});
+
+ReactDOM.render(
+  <React.StrictMode>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
 
 function App() {
-  const [notes, setNotes] = useState(
-    localStorage.notes ? JSON.parse(localStorage.notes) : []
-  );
-  const [activeNote, setActiveNote] = useState(false);
+  const [notes, setNotes] = useState([]);
+
+  const { loading, data } = useQuery(QUERY_SINGLE_PROFILE, {
+    variables: { profileUsername: 'abcdefg' },
+  });
 
   useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
+    if (!loading && data) {
+      setNotes(data.profile.entries);
+    }
+  }, [loading, data]);
 
-  const onAddNote = () => {
-    const newNote = {
-      id: uuid(),
-      title: "Untitled Note",
-      body: "",
-      lastModified: Date.now(),
-    };
+  const testNotes = data?.profile?.entries || [];
 
-    setNotes([newNote, ...notes]);
-    setActiveNote(newNote.id);
+  console.log("testNotes",testNotes);
+
+  const [activeNote, setActiveNote] = useState(false);
+
+  //const [createNote] = useMutation(ADD_ENTRY);
+
+  const [createNote] = useMutation(ADD_ENTRY, {
+    onCompleted: () => {
+      console.log(1);
+      refetchProfile();
+    },
+    onError(error) {
+      console.log(2);
+      console.error('Error creating note:', error);
+    },
+  });
+
+
+  const refetchProfile = () => {
+    client
+      .query({
+        query: QUERY_SINGLE_PROFILE,
+        variables: { profileUsername: 'abcdefg' },
+      })
+      .then(({ data }) => {
+        console.log("data",data);
+        if (data && data.profile) {
+          setNotes(data.profile.entries);
+        }
+      })
+      .catch((error) => {
+        console.error('Error refetching profile:', error);
+      });
   };
+
+  const onAddNote =  () => {
+    const _id = uuid()
+    console.log(_id);
+    const newNote = {
+      //_id,
+      entryTitle: 'a',
+      entryContent: 'ab',
+      createdAt: Date.now(),
+    };
+    
+    createNote({
+      variables: {
+       // _id,
+        entryTitle: newNote.entryTitle || '', 
+        entryContent: newNote.entryContent || '',
+        createdAt: newNote.createdAt.toString(),
+      },
+    })
+      .then(({ data }) => {
+        console.log('New note created',data);
+        setActiveNote(newNote._id);
+      })
+      .catch((error) => {
+        console.error('Error creating note:', error);
+      });
+  };
+
 
   const onDeleteNote = (noteId) => {
-    setNotes(notes.filter(({ id }) => id !== noteId));
+    // setNotes(notes.filter(({ id }) => id !== noteId));
+    //toDo : remove entry mutation
   };
 
+  const [editEntry] = useMutation(EDIT_ENTRY);
+
   const onUpdateNote = (updatedNote) => {
-    const updatedNotesArr = notes.map((note) => {
-      if (note.id === updatedNote.id) {
-        return updatedNote;
-      }
-
-      return note;
+    console.log("updatedlog", updatedNote);
+    editEntry({
+      variables: {
+        entryId: updatedNote.activeNote,
+        editEntryEntryTitle: updatedNote.entryTitle || '',
+        editEntryEntryContent: updatedNote.entryContent || '',
+      },
+     
     });
-
-    setNotes(updatedNotesArr);
   };
 
   const getActiveNote = () => {
-    return notes.find(({ id }) => id === activeNote);
+    return testNotes.find(({ _id }) => _id === activeNote);
   };
-
   return (
     //wrapping app child components into apollo container
-    <ApolloProvider client={client}>
+    
       <Router>
         <Routes>
           <Route
@@ -78,13 +169,13 @@ function App() {
           activeNote={activeNote}
           setActiveNote={setActiveNote}
         />
-        <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
+        <Main activeNote={activeNote} 
+        onUpdateNote={onUpdateNote} />
       </div>}
       />
       </Routes>
       </Router>
-    </ApolloProvider>
+  
   );
 }
-
 export default App;
