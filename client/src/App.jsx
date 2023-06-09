@@ -67,14 +67,19 @@ function App() {
 
   const [activeNote, setActiveNote] = useState(false);
 
+  //const [createNote] = useMutation(ADD_ENTRY);
+
   const [createNote] = useMutation(ADD_ENTRY, {
     onCompleted: () => {
+      console.log(1);
       refetchProfile();
     },
     onError(error) {
+      console.log(2);
       console.error('Error creating note:', error);
     },
   });
+
 
   const refetchProfile = () => {
     client
@@ -93,18 +98,21 @@ function App() {
       });
   };
 
-  const onAddNote = (entryTitle, entryContent) => {
+  const onAddNote =  () => {
+    const _id = uuid()
+    console.log(_id);
     const newNote = {
-      _id: uuid(),
-      entryTitle: entryTitle,
-      entryContent: entryContent,
+      //_id,
+      entryTitle: 'a',
+      entryContent: 'ab',
       createdAt: Date.now(),
     };
-    console.log("newnote", newNote);
+    
     createNote({
       variables: {
-        entryTitle: newNote.entryTitle,
-        entryContent: newNote.entryContent,
+       // _id,
+        entryTitle: newNote.entryTitle || '', 
+        entryContent: newNote.entryContent || '',
         createdAt: newNote.createdAt.toString(),
       },
     })
@@ -130,7 +138,7 @@ function App() {
     editEntry({
       variables: {
         entryId: updatedNote.activeNote,
-        editEntryEntryTitle: updatedNote.entryTitle,
+        editEntryEntryTitle: updatedNote.entryTitle || '',
         editEntryEntryContent: updatedNote.entryContent || '',
       },
      

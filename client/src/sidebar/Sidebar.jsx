@@ -7,8 +7,8 @@ const Sidebar = ({
   activeNote,
   setActiveNote,
 }) => {
-  console.log("INSIDESIDEBAR");
   const sortedNotes = [...notes].sort((a, b) => b.lastModified - a.lastModified);
+  console.log("INSIDESIDEBAR", sortedNotes);
 
   return (
     <div className="app-sidebar">
