@@ -129,11 +129,11 @@ function App() {
     console.log("updatedlog", updatedNote);
     editEntry({
       variables: {
-        entryId: updatedNote._id,
+        entryId: updatedNote.activeNote,
         editEntryEntryTitle: updatedNote.entryTitle,
-        editEntryEntryContent: updatedNote.entryContent,
+        editEntryEntryContent: updatedNote.entryContent || '',
       },
-      // You can also add an `onCompleted` or `onError` callback if needed
+     
     });
   };
 
