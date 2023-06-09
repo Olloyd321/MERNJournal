@@ -1,7 +1,11 @@
 const { Schema, model } = require('mongoose');
 
 const entrySchema = new Schema({
-    
+  
+  _id: {
+    type: String,
+    required: true
+  },
   entryTitle: {
     type: String,
     required: 'Your entry needs a title!',

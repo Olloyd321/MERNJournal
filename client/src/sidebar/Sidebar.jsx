@@ -7,7 +7,8 @@ const Sidebar = ({
   activeNote,
   setActiveNote,
 }) => {
-  const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified);
+  console.log("INSIDESIDEBAR");
+  const sortedNotes = [...notes].sort((a, b) => b.lastModified - a.lastModified);
 
   return (
     <div className="app-sidebar">
@@ -21,6 +22,7 @@ const Sidebar = ({
           <div
             className={`app-sidebar-note ${_id === activeNote && "active"}`}
             onClick={() => setActiveNote(_id)}
+            key={_id}
           >
             <div className="sidebar-note-title">
               <strong>{entryTitle}</strong>

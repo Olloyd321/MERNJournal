@@ -38,8 +38,8 @@ mutation  AddEntry($entryTitle: String!, $entryContent: String!) {
 `;
 
 export const EDIT_ENTRY = gql`
-mutation EditEntry($entryId: ID!, $editEntryEntryTitle2: String!, $editEntryEntryContent2: String!) {
-  editEntry(entryId: $entryId, entryTitle: $editEntryEntryTitle2, entryContent: $editEntryEntryContent2) {
+mutation EditEntry($entryId: ID!, $editEntryEntryTitle: String!, $editEntryEntryContent: String!) {
+  editEntry(entryId: $entryId, entryTitle: $editEntryEntryTitle, entryContent: $editEntryEntryContent) {
     _id
     createdAt
     entryAuthor
